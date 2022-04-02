@@ -1,4 +1,4 @@
-package entity;
+package pl.karolSzymaniak.hibernate.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,12 +11,22 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String desc;
+    private String description;
     private LocalDateTime created;
-    private LocalDateTime update;
+    private LocalDateTime updated;
     private BigDecimal price;
     @Enumerated(EnumType.STRING)
+    @Column(name = "type")
     private ProductType productType;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -26,12 +36,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getCreated() {
@@ -42,12 +52,12 @@ public class Product {
         this.created = created;
     }
 
-    public LocalDateTime getUpdate() {
-        return update;
+    public LocalDateTime getUpdated() {
+        return updated;
     }
 
-    public void setUpdate(LocalDateTime update) {
-        this.update = update;
+    public void setUpdated(LocalDateTime updated) {
+        this.updated = updated;
     }
 
     public BigDecimal getPrice() {
@@ -64,5 +74,19 @@ public class Product {
 
     public void setProductType(ProductType productType) {
         this.productType = productType;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", created=" + created +
+                ", updated=" + updated +
+                ", price=" + price +
+                ", productType=" + productType +
+                '}';
     }
 }

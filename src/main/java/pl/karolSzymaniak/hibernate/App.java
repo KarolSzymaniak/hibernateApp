@@ -1,3 +1,5 @@
+package pl.karolSzymaniak.hibernate;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -5,7 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class CreateApp {
+public class App {
+
     private static Logger logger = LogManager.getLogger();
     private  static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unit");
     public static void main(String[] args) {
@@ -14,6 +17,8 @@ public class CreateApp {
 
         entityManager.getTransaction().begin();
 
+
+        logger.info("hello");
 
         entityManager.getTransaction().commit();
         entityManager.close();
