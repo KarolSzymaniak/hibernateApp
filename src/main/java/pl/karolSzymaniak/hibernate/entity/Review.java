@@ -10,8 +10,11 @@ public class Review {
     private String content;
     private int rating;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @ManyToOne
+    private Product product;
+
+//    @Column(name = "product_id"
+//    private Long productId;
 
 
     public Long getId() {
@@ -38,13 +41,32 @@ public class Review {
         this.rating = rating;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
+
+    //    public Long getProductId() {
+//        return productId;
+//    }
+//
+//    public void setProductId(Long productId) {
+//        this.productId = productId;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Review{" +
+//                "id=" + id +
+//                ", content='" + content + '\'' +
+//                ", rating=" + rating +
+//                ", productId=" + productId +
+//                '}';
+//    }
+
 
     @Override
     public String toString() {
@@ -52,7 +74,6 @@ public class Review {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", rating=" + rating +
-                ", productId=" + productId +
                 '}';
     }
 }

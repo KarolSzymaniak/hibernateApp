@@ -20,8 +20,11 @@ public class Product {
     @Column(name = "type")
     private ProductType productType;
 
-    @OneToMany
-    @JoinColumn(name = "product_id")
+//    @OneToMany
+//    @JoinColumn(name = "product_id")
+//    private List<Review> reviews;
+
+    @OneToMany(mappedBy = "product")
     private List<Review> reviews;
 
 
