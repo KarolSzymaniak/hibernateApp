@@ -10,7 +10,8 @@ public class Review {
     private String content;
     private int rating;
 
-    @ManyToOne
+    //@ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
 //    @Column(name = "product_id"
