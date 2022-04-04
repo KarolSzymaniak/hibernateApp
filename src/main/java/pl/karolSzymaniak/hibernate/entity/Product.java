@@ -81,6 +81,13 @@ public class Product {
         this.productType = productType;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     @Override
     public String toString() {

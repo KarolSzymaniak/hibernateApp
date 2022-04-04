@@ -3,17 +3,14 @@ package pl.karolSzymaniak.hibernate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.karolSzymaniak.hibernate.entity.Product;
-import pl.karolSzymaniak.hibernate.entity.ProductType;
+import pl.karolSzymaniak.hibernate.entity.Review;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class OneToManyApp {
-
+public class OneToManyBidirectionalApp {
     private static Logger logger = LogManager.getLogger();
     private  static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unit");
     public static void main(String[] args) {
@@ -23,11 +20,10 @@ public class OneToManyApp {
         entityManager.getTransaction().begin();
 
 
-        //Pobieranie danych z tabeli Product w JPA
-        List<Product> products = entityManager.createQuery("select p from Product p").getResultList();
-        for (Product product :products ){
-            logger.info(product.getName());
-            logger.info(product.getReviews());
+        //Pobieranie danych z tabeli review w JPA
+        List<Review> reviews = entityManager.createQuery("select r from Review r").getResultList();
+        for (Review review :reviews ){
+            logger.info(review);
         }
 
         entityManager.getTransaction().commit();
