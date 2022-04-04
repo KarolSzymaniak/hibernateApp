@@ -6,6 +6,7 @@
     <persistence-unit name="unit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>pl.karolSzymaniak.hibernate.entity.Product</class>
+        <class>pl.karolSzymaniak.hibernate.entity.Review</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
