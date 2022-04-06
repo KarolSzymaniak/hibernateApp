@@ -32,6 +32,10 @@ public class Product {
     private Category category;
 
 
+    @ManyToMany
+    @JoinTable(joinColumns = { @JoinColumn(name = "product_id")},
+    inverseJoinColumns = {@JoinColumn( name = "attribute_id")})
+    private List<Attribute> attributes;
 
 
     public Long getId() {
@@ -104,6 +108,14 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Attribute> getAttribute() {
+        return attributes;
+    }
+
+    public void setAttribute(List<Attribute> attribute) {
+        this.attributes = attribute;
     }
 
     @Override
