@@ -28,7 +28,7 @@ public class Product {
     private List<Review> reviews;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Category category;
 
 
