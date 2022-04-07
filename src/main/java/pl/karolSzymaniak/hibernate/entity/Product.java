@@ -3,6 +3,7 @@ package pl.karolSzymaniak.hibernate.entity;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,10 +33,18 @@ public class Product {
     private Category category;
 
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(joinColumns = { @JoinColumn(name = "product_id")},
     inverseJoinColumns = {@JoinColumn( name = "attribute_id")})
-    private List<Attribute> attributes;
+    private List<Attribute> attributes = new ArrayList<>();
+
+
+    public void addAttributes(Attribute attribute) {
+    attributes.add(attribute);
+
+    //po drugiej stronie relacji także dodajemy ten atrybut
+        attribute.getProducts().add(this);
+    }
 
 
     public Long getId() {
@@ -131,4 +140,5 @@ public class Product {
 //                ", reviews=" + reviews +
                 '}';
     }
+
 }
