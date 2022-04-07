@@ -24,7 +24,7 @@ public class Product {
 //    @JoinColumn(name = "product_id")
 //    private List<Review> reviews;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.REMOVE)
     private List<Review> reviews;
 
 
