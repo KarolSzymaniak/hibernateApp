@@ -25,8 +25,8 @@ public class Product {
 //    @JoinColumn(name = "product_id")
 //    private List<Review> reviews;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.REMOVE)
-    private List<Review> reviews;
+    @OneToMany(mappedBy = "product",cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    private List<Review> reviews = new ArrayList<>();
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,6 +45,14 @@ public class Product {
     //po drugiej stronie relacji także dodajemy ten atrybut
         attribute.getProducts().add(this);
     }
+
+
+    public void addReview(Review review) {
+        reviews.add(review);
+        //Teraz musimy dodać do produktu
+        review.setProduct(this);
+    }
+
 
 
     public Long getId() {
